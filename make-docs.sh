@@ -13,12 +13,11 @@ git init
 git config --global user.name "doc bot"
 git config --global user.email "docbot@travis"
 git remote add upstream "https://$GH_TOKEN@github.com/$1/$2"
-git fetch upstream
-git reset upstream/gh-pages
 
 touch .
 
+git checkout -b gh-pages
 git add -A .
 git commit -m "rebuild pages at ${rev}"
-git push upstream HEAD:gh-pages
+git push --force --quiet upstream gh-pages
 
